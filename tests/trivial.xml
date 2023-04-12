@@ -1,0 +1,16 @@
+<?xml-stylesheet type="text/xsl" href="https://asia-southeast1-eric-han.cloudfunctions.net/cs3203-analysis"?>
+<test_results>
+<info>
+<name>99</name><parsing_time_taken>99.000000</parsing_time_taken>
+<build>Release</build><datetime>31-Dec-1999 23:59</datetime></info>
+<queries>
+<query>
+<id Tag1="1">1</id><querystr>query1</querystr>
+<stuans>999</stuans>
+<correct>999</correct>
+<time_taken>99.000000</time_taken>
+<passed />
+</query>
+
+</queries>
+</test_results>
