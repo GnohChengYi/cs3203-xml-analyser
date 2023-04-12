@@ -11,6 +11,6 @@ class Main {
         String xmlPath = scanner.nextLine();
         scanner.close();
         TestResults testResult = Parser.parse(xmlPath);
-        System.out.println(testResult);
+        System.out.println(testResult.getQueries());
     }
 }
