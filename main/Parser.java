@@ -8,9 +8,9 @@ import java.nio.file.Path;
 class Parser {
     static TestResults parse(String xmlPath) throws IOException {
         String content = Files.readString(Path.of(xmlPath));
-        int startIndex = content.indexOf(TestResults.TAG_START);
+        int beginIndex = content.indexOf(TestResults.TAG_BEGIN);
         int endIndex = content.indexOf(TestResults.TAG_END) + TestResults.TAG_END.length();
-        String rawTestResults = content.substring(startIndex, endIndex);
+        String rawTestResults = content.substring(beginIndex, endIndex);
         return new TestResults(rawTestResults);
     }
 }
