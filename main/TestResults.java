@@ -17,8 +17,8 @@ class TestResults {
     }
 
     static TestResults parse(String dirtyRawString) {
-        int beginIndex = dirtyRawString.indexOf(TestResults.TAG_BEGIN) + TestResults.TAG_BEGIN.length();
-        int endIndex = dirtyRawString.indexOf(TestResults.TAG_END);
+        int beginIndex = dirtyRawString.indexOf(TAG_BEGIN) + TAG_BEGIN.length();
+        int endIndex = dirtyRawString.indexOf(TAG_END, beginIndex);
         String value = dirtyRawString.substring(beginIndex, endIndex);
         return new TestResults(value);
     }

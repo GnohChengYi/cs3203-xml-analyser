@@ -9,12 +9,15 @@ class Query {
     public static final String TAG_END = "</query>";
     public static final String TAG_BEGIN_MULT = "<queries>";
     public static final String TAG_END_MULT = "</queries>";
+
     private final String value;
+    private Failed failed = null;
 
     Query(String value) {
         this.value = value;
+        failed = Failed.parse(value);
     }
-    
+
     static List<Query> parseAll(String dirtyRawString) {
         List<Query> queries = new ArrayList<>();
         int fromIndex = 0;
@@ -41,6 +44,10 @@ class Query {
 
     public String getValue() {
         return value;
+    }
+
+    public boolean isFailed() {
+        return failed != null;
     }
 
     @Override

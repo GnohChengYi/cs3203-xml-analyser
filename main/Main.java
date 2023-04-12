@@ -11,6 +11,8 @@ class Main {
         String xmlPath = scanner.nextLine();
         scanner.close();
         TestResults testResult = Parser.parse(xmlPath);
+        Analyser analyser = new Analyser(testResult);
         System.out.println(testResult.getQueries());
+        System.out.println(analyser.getFailedCount());
     }
 }
