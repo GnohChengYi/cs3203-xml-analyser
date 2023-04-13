@@ -8,10 +8,9 @@ class Analyser {
         this.testResults = testResults;
     }
 
-    List<String> getMatchingQueries(String queryStrRegex, String missingRegex, String additionalRegex) {
-        System.out.printf("analysing: queryStrRegex=%s missingRegex=%s additionalRegex=%s\n\n", queryStrRegex,
-                missingRegex,
-                additionalRegex);
+    List<String> getMatchingQueries(String queryStrHas, String missingHas, String additionalHas) {
+        System.out.printf("analysing: queryStrRegex=%s missingRegex=%s additionalRegex=%s\n\n", queryStrHas,
+                missingHas, additionalHas);
         List<Query> failedQueries = testResults.getFailedQueries();
         List<String> ids = new ArrayList<>();
         for (Query query : failedQueries) {
@@ -19,8 +18,8 @@ class Analyser {
             System.out.println("querystr: " + query.getQueryStr());
             System.out.println("missing: " + query.getFailed().getMissing());
             System.out.println("additional: " + query.getFailed().getAdditional());
-            if (query.getQueryStr().matches(queryStrRegex) && query.getFailed().getMissing().matches(missingRegex)
-                    && query.getFailed().getAdditional().matches(additionalRegex)) {
+            if (query.getQueryStr().contains(queryStrHas) && query.getFailed().getMissing().contains(missingHas)
+                    && query.getFailed().getAdditional().contains(additionalHas)) {
                 ids.add(query.getId());
             }
             System.out.println();
