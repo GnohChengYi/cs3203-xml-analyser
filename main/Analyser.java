@@ -5,13 +5,8 @@ class Analyser {
         this.testResults = testResults;
     }
 
-    int getFailedCount() {
-        int count = 0;
-        for (Query query : testResults.getQueries()) {
-            if (query.isFailed()) {
-                count += 1;
-            }
-        }
-        return count;
+    void analyse(String queryStrRegex, String missingRegex, String additionalRegex) {
+        System.out.printf("analysing: queryStrRegex=%s missingRegex=%s additionalRegex=%s\n\n", queryStrRegex, missingRegex,
+                additionalRegex);
     }
 }
