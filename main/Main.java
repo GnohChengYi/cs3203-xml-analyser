@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -20,7 +21,8 @@ class Main {
             String missingRegex = scanner.nextLine();
             System.out.print("Regex for additional answers: ");
             String additionalRegex = scanner.nextLine();
-            analyser.analyse(queryStrRegex, missingRegex, additionalRegex);
+            List<String> ids = analyser.getMatchingQueries(queryStrRegex, missingRegex, additionalRegex);
+            System.out.println(ids);
             System.out.printf("input \"%s\" to stop, anything else to continue: ", STOP_STRING);
             String option = scanner.nextLine();
             if (option.equals(STOP_STRING)) {

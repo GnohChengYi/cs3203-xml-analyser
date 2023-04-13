@@ -9,15 +9,17 @@ class Query {
     public static final String TAG_END = "</query>";
     public static final String TAG_BEGIN_MULT = "<queries>";
     public static final String TAG_END_MULT = "</queries>";
+    public static final String TAG_ID = "id";
+    public static final String TAG_QUERY_STR = "querystr";
 
     private final String value;
     private Failed failed = null;
+    private String id = "";
     private String queryStr = "";
 
     Query(String value) {
         this.value = value;
-        failed = Failed.parse(value);
-        queryStr = getQueryStr();
+        init();
     }
 
     static List<Query> parseAll(String dirtyRawString) {
@@ -44,17 +46,30 @@ class Query {
         return new Query(value);
     }
 
-    public String getValue() {
+    String getValue() {
         return value;
     }
 
-    public boolean isFailed() {
+    Failed getFailed() {
+        return failed;
+    }
+
+    boolean isFailed() {
         return failed != null;
     }
 
-    private String getQueryStr() {
-        // TODO
-        return "";
+    String getId() {
+        return id;
+    }
+
+    String getQueryStr() {
+        return queryStr;
+    }
+
+    private void init() {
+        failed = Failed.parse(value);
+        id = Utils.getValueFlexible(value, TAG_ID);
+        queryStr = Utils.getValue(value, TAG_QUERY_STR);
     }
 
     @Override
