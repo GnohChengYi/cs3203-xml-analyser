@@ -5,8 +5,7 @@ import java.util.stream.Collectors;
  * Object representing the test results.
  */
 class TestResults {
-    public static final String TAG_BEGIN = "<test_results>";
-    public static final String TAG_END = "</test_results>";
+    public static final String TAG = "test_results";
 
     private final String value;
     private List<Query> queries;
@@ -19,9 +18,10 @@ class TestResults {
     }
 
     static TestResults parse(String dirtyRawString) {
-        int beginIndex = dirtyRawString.indexOf(TAG_BEGIN) + TAG_BEGIN.length();
-        int endIndex = dirtyRawString.indexOf(TAG_END, beginIndex);
-        String value = dirtyRawString.substring(beginIndex, endIndex);
+        String value = Utils.getValue(dirtyRawString, TAG);
+        if (value == null) {
+            return null;
+        }
         return new TestResults(value);
     }
 

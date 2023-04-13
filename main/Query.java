@@ -12,10 +12,12 @@ class Query {
 
     private final String value;
     private Failed failed = null;
+    private String queryStr = "";
 
     Query(String value) {
         this.value = value;
         failed = Failed.parse(value);
+        queryStr = getQueryStr();
     }
 
     static List<Query> parseAll(String dirtyRawString) {
@@ -48,6 +50,11 @@ class Query {
 
     public boolean isFailed() {
         return failed != null;
+    }
+
+    private String getQueryStr() {
+        // TODO
+        return "";
     }
 
     @Override
